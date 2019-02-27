@@ -1,0 +1,20 @@
+{
+	"name": "vuex-convert",
+	"version": "1.0.1",
+	"author": "Pszz",
+	"license": "ISC",
+	"description": "Simplify vuex configuration",
+	"main": "main.min.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+ssh://git@github.com/Pszz/Vuex-Convert.git"
+	},
+	"keywords": ["Vuex", "Vue"],
+	"bugs": {
+		"url": "https://github.com/Pszz/Vuex-Convert/issues"
+	},
+	"homepage": "https://github.com/Pszz/Vuex-Convert#readme"
+}
