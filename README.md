@@ -1,21 +1,14 @@
 # Vuex-Convert
-### Version 1.0.1
+### Version 1.0.2
 
 
 
-### Description
+### Description(简述)
 
-- Simplify vuex configuration
-
-
-### Link
-
-- [ Examples ](https://github.com/Pszz/Vuex-Convert/dist)
-
-- [ Source ](https://github.com/Pszz/Vuex-Convert) 
+- Simplify vuex configuration(简化Vuex配置，让你的团队更容易上手)
 
 
-### Install Vuex-Convert
+### Install（安装）
 
 ```base
 $ npm install npm i vuex-convert
@@ -23,91 +16,75 @@ $ npm install npm i vuex-convert
 
 
 
-### Configuration Vuex-Convert
+### Basic usage（基本用法）
+
+- Create store.js
 
 ```javascript
-// 1. create store.conf.js
-// store.conf.js
+// /conf/store.js
 import Vue from 'vue'
 import Vuex from 'vuex'
-import vuexConvert from 'vuex-convert'
+import VuexConvert from 'vuex-convert'
 
-const STORE = new vuexConvert({
-    // Public data （Required attribute）
-  public: {
-    // stateName, actionsName, mutationsName, gettersName
-    // base , setBase, setBase, getBase
-    base: 'Hello Vuex',
-
-    // ...Object usage 
-    objBase: {
-      value: {
-        msg: 'I‘M Object'
-      }
-    },
-    // Advanced usage
-    objAdvanced:{
-       value: {
-        msg: 'I‘M Advanced usage'
-      },
-      // local || session || undefined
-      storage: 'local', 
-      // custom made Actions
-      actions: function (name, { commit, state }, payout) {
-        commit(name, payout || 'Ohter')
-      },
-      // custom made getters
-      getters: function(){
-        return 'return Data'
-      }
-    }
+const STORE = new VuexConvert({
+  // State Data(状态变量)
+  public:{
+    base: 'Hello Vuex'
+    // ...other state（其他状态）
   },
-  // Modules data （Required attribute）
-	modules: {
-    user: {
+  // Modules Data(存放Modules变量)
+  modules:{
+    user:{
       name: 'Pi'
     }
+    // ...other state（其他状态）
   }
 })
-// Vue usage
+
 Vue.use(Vuex)
 export default new Vuex.Store(STORE)
 
-
-// /src/main.js
-import store from './store.conf.js'
-new Vue({
-   ...ohter,
-    store  // add store
-})
-
-// ok
-
 ```
 
-### Use Vuex-Convert
+- main.js
+
+``` javascript
+import store from './conf/store.js'
+  
+new Vue({
+    store,  // <---- add store
+    // Other content
+})
+```
+
+
+
+
+
+
+### Use the demo （使用案例）
+
 ``` Vue
 // app.vue
-import { mapGetters } from 'vuex'
 export default {
   name: 'App',
-  computed: {
-    // Usage 1
-    // <div>{{ base }}</div>
-    ...mapGetters({
-      base: 'getBase'
-    })
-  },
   mounted(){
-    // Usage 2
-    // get Data
-    console.log(this.$store.state.base) // --> "Hello Vuex"
-    console.log(this.$store.getters.getBase) // --> "Hello Vuex"
-    console.log(this.$store.getters["user/getName"]) // --> "Pi"
+   // get Data
+   console.log(this.$store.state.base) // --> "Hello Vuex"
+   console.log(this.$store.getters.getBase) // --> "Hello Vuex"
+   console.log(this.$store.getters["user/getName"]) // --> "Pi"
     
     // set Data 
     this.$store.dispatch('setBase', 'Update Hello')
     console.log(this.$store.state.base) // --> "Update Hello"
   }
 }
+
 ```
+
+
+
+### Link
+
+- [ More usage (更多用法) ](https://github.com/Pszz/Vuex-Convert/dist)
+- [ Source (源码) ](https://github.com/Pszz/Vuex-Convert) 
