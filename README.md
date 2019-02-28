@@ -11,7 +11,7 @@
 ### Install（安装）
 
 ```base
-$ npm install npm i vuex-convert
+$ npm i vuex-convert
 ```
 
 
