@@ -86,5 +86,5 @@ export default {
 
 ### Link
 
-- [ More usage (更多用法) ](https://github.com/Pszz/Vuex-Convert/dist)
+- [ More usage (更多用法) ](http://www.piszz.com/Vuex-Convert/docs/index.html)
 - [ Source (源码) ](https://github.com/Pszz/Vuex-Convert) 
