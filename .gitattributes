@@ -1,4 +1,4 @@
-*.js linguist-language=Vuex
+*.js linguist-language=vue
 *.css linguist-language=vue
 *.html linguist-language=vue
 *.vue linguist-language=vue
