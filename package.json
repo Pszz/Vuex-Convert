@@ -1,6 +1,6 @@
 {
 	"name": "vuex-convert",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"author": "Pszz",
 	"license": "ISC",
 	"description": "Simplify vuex configuration",
@@ -12,7 +12,10 @@
 		"type": "git",
 		"url": "git+ssh://git@github.com/Pszz/Vuex-Convert.git"
 	},
-	"keywords": ["Vuex", "Vue"],
+	"keywords": [
+		"Vuex",
+		"Vue"
+	],
 	"bugs": {
 		"url": "https://github.com/Pszz/Vuex-Convert/issues"
 	},

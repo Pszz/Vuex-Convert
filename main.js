@@ -10,31 +10,32 @@ import Vue from "vue"
  * Convert Conf files to vuex configuration
  * @param { Object } conf Conf files
  */
-const Convert = function(conf) {
-  if (!(this instanceof Convert)) {
+var Convert = function(conf) {
+  const _this = this
+  if (!(_this instanceof Convert)) {
     return new Convert(conf)
   }
 
   // Vuex Attribute
-  this.state = {}
-  this.getters = {}
-  this.mutations = {}
-  this.actions = {}
-  this.modules = {}
+  _this.state = {}
+  _this.getters = {}
+  _this.mutations = {}
+  _this.actions = {}
+  _this.modules = {}
 
   // Public data
   let _public = conf["public"] || {}
   // Modules data
   let _modules = conf["modules"] || {}
 
-  // convert public data
-  Object.keys(_public).forEach(function(v){
-    convert(v, _public[v], this)
+  // cvt public data
+  Object.keys(_public).forEach(function(v) {
+    cvt(v, _public[v], _this)
   })
 
-  // convert modules data
-  Object.keys(_modules).forEach(function(v){
-    let moduleItem = (this["modules"][v] = {
+  // cvt modules data
+  Object.keys(_modules).forEach(function(v) {
+    let moduleItem = (_this["modules"][v] = {
       namespaced: true,
       state: {},
       getters: {},
@@ -42,7 +43,7 @@ const Convert = function(conf) {
       mutations: {}
     })
     Object.keys(_modules[v]).forEach(function(mv) {
-      convert(mv, _modules[v][mv], moduleItem)
+      cvt(mv, _modules[v][mv], moduleItem)
     })
   })
 
@@ -52,7 +53,7 @@ const Convert = function(conf) {
    * @param { * } value Value
    * @param { String } modules Modules name
    */
-  function convert(key, value, modules) {
+  function cvt(key, value, modules) {
     // The first letter should be capitalized.
     let attrName = toUppercaseFirst(key)
     // setName
@@ -89,7 +90,7 @@ const Convert = function(conf) {
       modules["actions"][setName] = function({ commit }, payload) {
         // Forward
         if (typeof value.actions === "function") {
-          value.actions.apply(this, [setName, ...arguments])
+          value.actions.apply(_this, [setName, ...arguments])
         } else {
           commit(setName, payload)
         }
