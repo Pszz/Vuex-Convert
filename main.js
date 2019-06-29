@@ -17,6 +17,7 @@ var Convert = function(conf) {
   }
 
   // Vuex Attribute
+  _this.namespace = ""
   _this.state = {}
   _this.getters = {}
   _this.mutations = {}
@@ -28,15 +29,16 @@ var Convert = function(conf) {
   // Modules data
   let _modules = conf["modules"] || {}
 
-  // cvt public data
+  // Convert public data
   Object.keys(_public).forEach(function(v) {
     cvt(v, _public[v], _this)
   })
 
-  // cvt modules data
+  // Convert modules data
   Object.keys(_modules).forEach(function(v) {
     let moduleItem = (_this["modules"][v] = {
       namespaced: true,
+      namespace: v + "/",
       state: {},
       getters: {},
       actions: {},
@@ -51,7 +53,7 @@ var Convert = function(conf) {
    * Convert to Vuex
    * @param { String } key Name
    * @param { * } value Value
-   * @param { String } modules Modules name
+   * @param { String } modules Modules
    */
   function cvt(key, value, modules) {
     // The first letter should be capitalized.
@@ -90,7 +92,7 @@ var Convert = function(conf) {
       modules["actions"][setName] = function({ commit }, payload) {
         // Forward
         if (typeof value.actions === "function") {
-          value.actions.apply(_this, [setName, ...arguments])
+          return value.actions.apply(_this, [setName, ...arguments])
         } else {
           commit(setName, payload)
         }
