@@ -1,14 +1,7 @@
-# Vuex-Convert
-### Version 1.0.2
+# Vuex-Convert (v1.0.2)
+Just a tool to simplify Vuex.
 
-
-
-### Description(简述)
-
-- Simplify vuex configuration(简化Vuex配置，让你的团队更容易上手)
-
-
-### Install（安装）
+### Install
 
 ```base
 $ npm i vuex-convert
@@ -16,7 +9,7 @@ $ npm i vuex-convert
 
 
 
-### Basic usage（基本用法）
+### Usage
 
 - Create store.js
 
@@ -27,17 +20,16 @@ import Vuex from 'vuex'
 import VuexConvert from 'vuex-convert'
 
 const STORE = new VuexConvert({
-  // State Data(状态变量)
+  // State Data
   public:{
     base: 'Hello Vuex'
-    // ...other state（其他状态）
+    // ...other state
   },
-  // Modules Data(存放Modules变量)
+  // Modules
   modules:{
     user:{
       name: 'Pi'
     }
-    // ...other state（其他状态）
   }
 })
 
@@ -62,21 +54,21 @@ new Vue({
 
 
 
-### Use the demo （使用案例）
+### Demo 
 
 ``` Vue
 // app.vue
 export default {
   name: 'App',
   mounted(){
-   // get Data
-   console.log(this.$store.state.base) // --> "Hello Vuex"
-   console.log(this.$store.getters.getBase) // --> "Hello Vuex"
-   console.log(this.$store.getters["user/getName"]) // --> "Pi"
+   // Get Data
+   console.log(this.$store.state.base)               // --> "Hello Vuex"
+   console.log(this.$store.getters.getBase)          // --> "Hello Vuex"
+   console.log(this.$store.getters["user/getName"])  // --> "Pi"
     
-    // set Data 
+    // Set Data 
     this.$store.dispatch('setBase', 'Update Hello')
-    console.log(this.$store.state.base) // --> "Update Hello"
+    console.log(this.$store.state.base)              // --> "Update Hello"
   }
 }
 
@@ -86,5 +78,5 @@ export default {
 
 ### Link
 
-- [ More usage (更多用法) ](http://www.piszz.com/Vuex-Convert/docs/index.html)
-- [ Source (源码) ](https://github.com/Pszz/Vuex-Convert) 
+- [ Docs ](http://www.piszz.com/Vuex-Convert/docs/index.html)
+- [ Source ](https://github.com/Pszz/Vuex-Convert) 
